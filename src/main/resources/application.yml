@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  redis:
+    database: 1
+    host: 39.98.94.81
+    port: 6379
+    password: 123456
+    timeout: 10000
+  cache:
+    redis:
+      use-key-prefix: true
+      key-prefix: dev
+      cache-null-values: true
+      time-to-live: 20s
