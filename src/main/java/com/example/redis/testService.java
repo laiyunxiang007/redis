@@ -17,7 +17,8 @@ public class testService {
     private RedisTemplate redisTemplate;
 
     public String count(){
-       HashOperations<String,Object,Object> hashoperations =redisTemplate.opsForHash();
+       HashOperations<String,Object,Object> hashoperations = (HashOperations<String, Object, Object>) redisTemplate.boundHashOps("car");
+
         hashoperations.put("car","name","BMW");
         hashoperations.put("car","color","blue");
         hashoperations.put("car","size","1.5T");
@@ -25,7 +26,8 @@ public class testService {
         hashoperations.put("car1","color","blue");
         hashoperations.put("car1","size","1.5T");
         hashoperations.put("car","name",hashoperations.get("car","name")+"你好");
-        ListOperations<String,Object> listOperations= redisTemplate.opsForList();
+        ListOperations<String,Object> listOperations= (ListOperations<String, Object>) redisTemplate.boundListOps("name");
+
         listOperations.leftPush("name","car1");
         listOperations.leftPush("name","car2");
         listOperations.leftPush("name","car");
